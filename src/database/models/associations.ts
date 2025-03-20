@@ -1,0 +1,3 @@
+/*
+Ass models and associations
+*/
