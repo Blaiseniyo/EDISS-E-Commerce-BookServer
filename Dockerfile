@@ -2,6 +2,8 @@ FROM node:20.12.2-alpine as development
 
 ENV YARN_VERSION=1.22.22
 
+EXPOSE 80
+
 WORKDIR /usr/src/app
 
 COPY package*.json .
@@ -11,6 +13,8 @@ RUN yarn install
 COPY . .
 
 RUN yarn build
+
+CMD ["node", "dist/index.js"]
 
 
 FROM node:20.12.2-alpine as production
