@@ -22,7 +22,7 @@ export class CustomerController {
       const customer = await customerService.createCustomer(req.body);
       
       res.status(201)
-        .json(customer);
+        .json({"id":customer.id, ...req.body});
     } catch (error: any) {
       next(error);
     }

@@ -6,7 +6,7 @@ author: Blaise Niyonkuru<blaiseniyonkuru12@gmail.com>
 
 import Book from "../../database/models/book";
 import { CreateBookInput, UpdateBookInput, GetBookInput } from './type';
-import { ResourceAlreadyExistsError, NotFoundError } from "../../utils/errors";
+import { ResourceAlreadyExistsError, NotFoundError, BadRequestError } from "../../utils/errors";
 
 export class BookService {
 
@@ -34,6 +34,9 @@ export class BookService {
     async updateBook(params: UpdateBookInput['params'], body: UpdateBookInput['body']): Promise<Book> {
         try {
 
+            if (params.ISBN !== body.ISBN) {
+                throw new NotFoundError("ISBN in params does not match ISBN in body");
+            }
             // Check if book exists
             const existingBook = await this.getBookByISBN(params.ISBN);
 
@@ -66,7 +69,9 @@ export class BookService {
 
         try {
 
-            const book = await Book.findByPk(ISBN);
+            const book = await Book.findByPk(ISBN, {
+                attributes: { exclude: ['createdAt', 'updatedAt'] }
+            });
 
             return book;
 

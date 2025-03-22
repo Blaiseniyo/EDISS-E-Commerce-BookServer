@@ -21,7 +21,6 @@ export class CustomerService {
 
       // Create new customer
       const customer = await Customer.create(input);
-
       return customer;
     } catch (error) {
       throw error;
@@ -31,7 +30,9 @@ export class CustomerService {
   // Get a customer by numeric ID
   async getCustomerById(id: number): Promise<Customer | null> {
     try {
-      const customer = await Customer.findByPk(id);
+      const customer = await Customer.findByPk(id, {
+        attributes: { exclude: ['createdAt', 'updatedAt'] }
+    });
       return customer;
     } catch (error) {
       throw error;
@@ -41,11 +42,12 @@ export class CustomerService {
   // Get a customer by user ID (email)
   async getCustomerByUserId(userId: string): Promise<Customer | null> {
     try {
-      const customer = await Customer.findOne({
-        where: {
-          userId: userId
-        }
-      });
+    const customer = await Customer.findOne({
+      where: {
+        userId: userId
+      },
+      attributes: { exclude: ['createdAt', 'updatedAt'] }
+    });
       return customer;
     } catch (error) {
       throw error;
