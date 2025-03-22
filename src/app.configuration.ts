@@ -4,6 +4,15 @@
  *
  */
 import express, { Express, Request, Response } from "express";
+
+// Extend the Request interface to include the 'user' property
+declare global {
+  namespace Express {
+    interface Request {
+      user?: any;
+    }
+  }
+}
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import session from "express-session";

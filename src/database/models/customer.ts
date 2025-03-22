@@ -18,7 +18,7 @@ class Customer extends Model<InferAttributes<Customer>, InferCreationAttributes<
   declare address2: string | null;
   declare city: string;
   declare state: string;
-  declare zip: string;
+  declare zipcode: string;
 
   declare readonly createdAt: CreationOptional<Date>;
   declare readonly updatedAt: CreationOptional<Date>;
@@ -60,7 +60,7 @@ Customer.init(
       allowNull: false,
       type: DataTypes.STRING,
     },
-    zip: {
+    zipcode: {
       allowNull: false,
       type: DataTypes.STRING,
     },

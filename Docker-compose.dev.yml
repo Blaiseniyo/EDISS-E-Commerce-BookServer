@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      platforms:
+        - linux/amd64
+      target: development
+    volumes:
+      - ./:/usr/src/app
+      - /usr/scr/app/node_modules
+    ports:
+      - 3001:3001
+    env_file:
+      - .env
+    command: yarn dev
