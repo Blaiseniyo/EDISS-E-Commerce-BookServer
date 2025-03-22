@@ -2,7 +2,7 @@ FROM node:20.12.2-alpine
 
 ENV YARN_VERSION=1.22.22
 
-EXPOSE 8080
+EXPOSE 3000
 
 WORKDIR /usr/src/app
 
