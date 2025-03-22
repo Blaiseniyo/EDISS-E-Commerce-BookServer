@@ -4,8 +4,6 @@ services:
   api:
     build:
       context: .
-      platforms:
-        - linux/amd64
       target: development
     volumes:
       - ./:/usr/src/app

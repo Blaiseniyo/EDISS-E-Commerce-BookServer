@@ -5,7 +5,6 @@ services:
     build:
       context: .
       target: production
-      platform: linux/amd64
     image: blaiseniyo/assignment-api
     volumes:
       - ./:/usr/src/app
