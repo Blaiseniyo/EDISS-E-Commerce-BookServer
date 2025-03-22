@@ -35,7 +35,7 @@ export class BookService {
         try {
 
             if (params.ISBN !== body.ISBN) {
-                throw new NotFoundError("ISBN in params does not match ISBN in body");
+                throw new BadRequestError("ISBN in params does not match ISBN in body");
             }
             // Check if book exists
             const existingBook = await this.getBookByISBN(params.ISBN);

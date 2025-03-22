@@ -14,8 +14,6 @@ COPY . .
 
 RUN yarn build
 
-# CMD ["node", "dist/index.js"]
-
 
 FROM node:20.12.2-alpine as production
 
