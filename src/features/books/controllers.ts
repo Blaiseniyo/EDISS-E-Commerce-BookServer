@@ -22,7 +22,7 @@ export class BookController {
         try {
             const book = await bookService.createBook(req.body);
 
-            res.status(201).json(book);
+            res.status(201).json(req.body);
 
         } catch (error: any) {
             next(error);

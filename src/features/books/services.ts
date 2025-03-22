@@ -17,9 +17,9 @@ export class BookService {
             // Check if book with given ISBN already exists
             const existingBook = await this.getBookByISBN(input.ISBN);
 
-            // if (existingBook) {
-            //     throw new ResourceAlreadyExistsError("This ISBN already exists in the system.");
-            // }
+            if (existingBook) {
+                throw new ResourceAlreadyExistsError("This ISBN already exists in the system.");
+            }
 
             // Create new book
             const book = await Book.create(input);
