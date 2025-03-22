@@ -9,7 +9,7 @@ services:
       - ./:/usr/src/app
       - /usr/scr/app/node_modules
     ports:
-      - 80:3000
+      - 80:8080
     env_file:
       - .env
     command: yarn dev
