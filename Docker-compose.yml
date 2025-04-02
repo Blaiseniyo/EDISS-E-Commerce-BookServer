@@ -10,6 +10,6 @@ services:
     #   - ./:/usr/src/app
     #   - /usr/src/app/node_modules
     ports:
-      - 80:8080
+      - 3000:3000
     env_file:
       - .env
